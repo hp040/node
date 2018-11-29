@@ -5,15 +5,16 @@ var port= process.env.PORT || 1337;
 
 
 http.createServer(function(req , res) {
+    var reqip =req.headers["x-forwarded-for"];
     res.writeHead(200,{'Content-Type':'text/html'});
-    res.write('hello node!'+req.connection.remoteAddress+"\n"+req.connection.remoteFamily);
+    res.write('hello node! your ip info : '+reqip+"\n");
     var h1p=url1.parse(req.url, true).query;
     if(h1p.d && h1p.m !==undefined){
         console.log(h1p.d);
         res.write(h1p.d+" "+h1p.m);
     }
     
-https.get('https://json.geoiplookup.io/api/'+req.connection.remoteAddress,whois =>{
+https.get('https://json.geoiplookup.io/api/'+reqip,whois =>{
     
     let body='';
     whois.on('data', data=>{
