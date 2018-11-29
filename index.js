@@ -1,6 +1,7 @@
 var http = require('http');
 var https =require('https');
 var url1 =require('url');
+var port= process.env.PORT || 1337;
 
 
 http.createServer(function(req , res) {
@@ -44,4 +45,4 @@ res.write("<br>");
 res.end();
 });
 }); 
-}).listen(1337, '0.0.0.0');
+}).listen(port, '0.0.0.0');
