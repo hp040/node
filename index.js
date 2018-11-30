@@ -2,6 +2,7 @@
 var fs = require('fs');
 var url1 = require('url');
 var https= require('https');
+var port= process.env.PORT || 1337;
 
 
 https.createServer(function(req , res){
@@ -80,4 +81,4 @@ res.end();
 });     
 }  
 }); 
-}).listen(1337 ,  '0.0.0.0');
+}).listen(port ,  '0.0.0.0');
