@@ -1,16 +1,13 @@
+
 {
-  "name": "test",
+  "name": "index.js",
   "version": "1.0.0",
-  "description": "",
+  "description": "html",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start":"index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.4"
-  }
+  "author": "hardik",
+  "license": "ISC"
 }
