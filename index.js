@@ -1,11 +1,11 @@
-//var http = require('http');
+var http = require('http');
 var fs = require('fs');
 var url1 = require('url');
 var https= require('https');
 var port= process.env.PORT || 1337;
 
 
-https.createServer(function(req , res){
+http.createServer(function(req , res){
     const reqip = req.headers["x-forwarded-for"];
     fs.readFile("./main.html", function(er , dt){
         res.writeHead(200,{'Content-Type':'text/html'});
