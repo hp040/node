@@ -1,6 +1,6 @@
 var http = require('http');
 var fs = require('fs');
-var url1 = require('url');
+var url = require('url');
 var https= require('https');
 var port= process.env.PORT || 1337;
 
@@ -11,9 +11,9 @@ http.createServer(function(req , res){
         res.writeHead(200,{'Content-Type':'text/html'});
         res.write(dt);   
     
-    var request = url1.parse(req.url, true).query;
+    var request = url.parse(req.url, true).query;
     if(request.ip !== undefined && request.ip !== ''){
-        console.log(request.ip);
+        console.log("ip requested"+request.ip);
         https.get('https://json.geoiplookup.io/api/'+request.ip,whois =>{
     
     let body='';
@@ -22,8 +22,9 @@ http.createServer(function(req , res){
         body+=data;
     })
 whois.on('end', ()=>{
+    
  var final= JSON.parse(body);
-
+    
 res.write("<br>");
 res.write("ip Address : "+final["ip"]);
 res.write("<br>");
@@ -55,6 +56,7 @@ res.end();
         body+=data;
     })
 whois.on('end', ()=>{
+    
  var final= JSON.parse(body);
 
 res.write("<br>");
